@@ -1,26 +1,43 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
+
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+	site: "https://wthgame.github.io/kitnomicon",
+	base: "kitnomicon",
+
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: "The Kitnomicon",
 			sidebar: [
 				{
-					label: 'Guides',
+					label: "Intro",
+					items: [{ label: "Installation", slug: "intro/installation" }],
+				},
+				{
+					label: "Guides",
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: "Example Guide", slug: "guides/example" },
+						{ label: "Writing KitTagObjects", slug: "guides/writing-tag-objects" },
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: "Objects",
+					autogenerate: { directory: "objects" },
+				},
+				{
+					label: "Standard Library",
+					autogenerate: { directory: "std" },
 				},
 			],
+			customCss: ["./src/styles/global.css"],
 		}),
 	],
+
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });
