@@ -11,21 +11,6 @@ permissions:
     id-token: write
 
 jobs:
-    docgen:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout your repository using git
-              uses: actions/checkout@v4
-            - name: Install, build, and upload your site
-              uses: withastro/action@v3
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "16"
-            - name: Setup Pages
-              uses: actions/configure-pages@v3
-              with:
-                  static_site_generator: next
     build:
         runs-on: ubuntu-latest
         steps:

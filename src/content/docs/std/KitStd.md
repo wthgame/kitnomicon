@@ -20,13 +20,11 @@ local std = require(ReplicatedStorage:WaitForChild("KitStd"))
 ### connectActivation
 
 ```luau
-
 function KitStd.connectActivation(
 	outerTrove: trove.Trove,
 	connectTo: T & Instance,
 	onActivated: (outerTrove: trove.Trove, instance: T, activationTrove: trove.Trove) -> (),
 	defaultMode: ActivationMode?
-
 ): ()
 ```
 
@@ -84,20 +82,46 @@ Self:onLoaded(function(trove, self)
 end)
 ```
 
+#### Parameters
+
+##### outerTrove `trove.Trove`
+
+
+
+##### connectTo `T & Instance`
+
+
+
+##### onActivated `(outerTrove: trove.Trove, instance: T, activationTrove: trove.Trove) -> ()`
+
+
+
+##### defaultMode `ActivationMode?`
+
+
+
+---
+
 ### getCharacter
 
 ```luau
-
 function KitStd.getCharacter(): types.Character
 
 ```
 
 Returns current character if it exists. Otherwise, wait for it to be added.
 
+#### Returns
+
+#####  `types.Character`
+
+
+
+---
+
 ### getHumanoid
 
 ```luau
-
 function KitStd.getHumanoid(): Humanoid
 
 ```
@@ -105,10 +129,17 @@ function KitStd.getHumanoid(): Humanoid
 Returns the character's Humanoid if it exists. Otherwise, waits for it to
 be added.
 
+#### Returns
+
+#####  `Humanoid`
+
+
+
+---
+
 ### getHumanoidRootPart
 
 ```luau
-
 function KitStd.getHumanoidRootPart(): BasePart
 
 ```
@@ -116,47 +147,74 @@ function KitStd.getHumanoidRootPart(): BasePart
 Returns the character's HumanoidRootPart if it exists. Otherwise, wait for
 it to be added.
 
+#### Returns
+
+#####  `BasePart`
+
+
+
+---
+
 ### getMaybeCharacter
 
 ```luau
-
 function KitStd.getMaybeCharacter(): types.Character?
 
 ```
 
 Returns the local player's character if it exists
 
+#### Returns
+
+#####  `types.Character?`
+
+
+
+---
+
 ### getMaybeHumanoid
 
 ```luau
-
 function KitStd.getMaybeHumanoid(): Humanoid?
 
 ```
 
 Returns the character's Humanoid if it exists.
 
+#### Returns
+
+#####  `Humanoid?`
+
+
+
+---
+
 ### getMaybeHumanoidRootPart
 
 ```luau
-
 function KitStd.getMaybeHumanoidRootPart(): BasePart?
 
 ```
 
 Returns the character's HumanoidRootPart if it exists.
 
+#### Returns
+
+#####  `BasePart?`
+
+
+
+---
+
 ### inferAndPlaySound
 
 ```luau
-
 function KitStd.inferAndPlaySound(
 	instance: Instance,
 	defaultSound: string?,
 	searchFor: string?,
 	config: types.PlaySoundConfig?,
 	spatial: boolean?
-
 ): ()
 ```
 
@@ -169,40 +227,92 @@ name of the attribute or child to search for, or defaults to searching for
 prelude.inferAndPlaySound(btn, std.SOUND_ASSETS.button, "PressSound")
 ```
 
+#### Parameters
+
+##### instance `Instance`
+
+
+
+##### defaultSound `string?`
+
+
+
+##### searchFor `string?`
+
+
+
+##### config `types.PlaySoundConfig?`
+
+
+
+##### spatial `boolean?`
+
+
+
+---
+
 ### isCharacter
 
 ```luau
-
 function KitStd.isCharacter(character: Instance): boolean
 
 ```
 
 Returns true if a model is a character
 
+#### Parameters
+
+##### character `Instance`
+
+#### Returns
+
+#####  `boolean`
+
+
+
+---
+
 ### isCharacterAlive
 
 ```luau
-
 function KitStd.isCharacterAlive(): boolean
 
 ```
 
 Returns true if the character is alive.
 
+#### Returns
+
+#####  `boolean`
+
+
+
+---
+
 ### isFromCharacter
 
 ```luau
-
 function KitStd.isFromCharacter(instance: Instance): boolean
 
 ```
 
 Returns true if the given instance is a descendant of the local character.
 
+#### Parameters
+
+##### instance `Instance`
+
+#### Returns
+
+#####  `boolean`
+
+
+
+---
+
 ### isFromMaybeCharacter
 
 ```luau
-
 function KitStd.isFromMaybeCharacter(instance: Instance): boolean
 
 ```
@@ -210,96 +320,205 @@ function KitStd.isFromMaybeCharacter(instance: Instance): boolean
 Returns true if the character exists and the given instance is a descendant
 of the local character.
 
+#### Parameters
+
+##### instance `Instance`
+
+#### Returns
+
+#####  `boolean`
+
+
+
+---
+
 ### isLocalPlayerCharacter
 
 ```luau
-
 function KitStd.isLocalPlayerCharacter(character: Instance): boolean
 
 ```
 
 Returns true if a model is the local player's character
 
+#### Parameters
+
+##### character `Instance`
+
+#### Returns
+
+#####  `boolean`
+
+
+
+---
+
 ### never
 
 ```luau
-
 function KitStd.never(): never
 
 ```
 
 Never returns.
 
+#### Returns
+
+#####  `never`
+
+
+
+---
+
 ### playSound
 
 ```luau
-
 function KitStd.playSound(
 	asset: string | Sound,
 	from: Instance?,
-	config: types.PlaySoundConfig?
-): ()
+	config: types.PlaySoundConfig?): ()
 ```
 
 Plays a sound from an asset string or cloned from a Sound instance.
 
+#### Parameters
+
+##### asset `string | Sound`
+
+
+
+##### from `Instance?`
+
+
+
+##### config `types.PlaySoundConfig?`
+
+
+
+---
+
 ### playSoundFromGameAssets
 
 ```luau
-
 function KitStd.playSoundFromGameAssets(
 	key: string,
 	from: Instance?,
-	config: types.PlaySoundConfig?
-): ()
+	config: types.PlaySoundConfig?): ()
 ```
 
 Plays a sound from the game's assets module. See the sounds table in the
 Replicated.WTHShared.assets module for what sounds can be played.
 
+#### Parameters
+
+##### key `string`
+
+
+
+##### from `Instance?`
+
+
+
+##### config `types.PlaySoundConfig?`
+
+
+
+---
+
 ### populateConstraintAttachments
 
 ```luau
-
 function KitStd.populateConstraintAttachments(constraint: Constraint): (Attachment, Attachment)
 ```
 
 Creates 2 attachments and sets them to the constraint attachment properties.
 
+#### Parameters
+
+##### constraint `Constraint`
+
+#### Returns
+
+#####  `Attachment`
+
+
+
+#####  `Attachment`
+
+
+
+---
+
 ### roundColor
 
 ```luau
-
 function KitStd.roundColor(color: Color3): Color3
 
 ```
 
 
 
+#### Parameters
+
+##### color `Color3`
+
+#### Returns
+
+#####  `Color3`
+
+
+
+---
+
 ### waitForCharacter
 
 ```luau
-
 function KitStd.waitForCharacter(): types.Character
 
 ```
 
 Waits for and returns the local player's character when it is added
 
+#### Returns
+
+#####  `types.Character`
+
+
+
+---
+
 ### weld
 
 ```luau
-
 function KitStd.weld(
 	trove: trove.Trove,
 	target: BasePart,
 	weldToTarget: BasePart,
 	unanchorTarget: boolean?
-
 ): WeldConstraint
 
 ```
 
 Welds the `weldToTarget` to the `target`. Optionally unanchors the
 `weldToTarget`.
+
+#### Parameters
+
+##### trove `trove.Trove`
+
+
+
+##### target `BasePart`
+
+
+
+##### weldToTarget `BasePart`
+
+
+
+##### unanchorTarget `boolean?`
+
+#### Returns
+
+#####  `WeldConstraint`
 
