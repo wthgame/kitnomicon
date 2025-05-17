@@ -21,10 +21,6 @@ export default defineConfig({
 							slug: "",
 						},
 						{
-							label: "Contributions",
-							slug: "contributions",
-						},
-						{
 							label: "Installation",
 							slug: "installation",
 						},

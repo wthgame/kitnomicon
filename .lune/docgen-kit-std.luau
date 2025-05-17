@@ -32,8 +32,6 @@ for _, extracted in allExtracted do
 	contents ..= "\n\n"
 	contents ..= extracted.desc
 
-	print(extracted)
-
 	if #extracted.properties > 0 then
 		table.sort(extracted.properties, sortByName)
 		contents ..= "\n\n"
@@ -114,9 +112,9 @@ for _, extracted in allExtracted do
 					contents ..= "\n\n"
 					contents ..= "##### "
 					contents ..= param.name
-					contents ..= " `"
+					contents ..= " <small>`: "
 					contents ..= param.lua_type:gsub("\n", "")
-					contents ..= "`"
+					contents ..= "`</small>"
 					contents ..= "\n\n"
 					contents ..= param.desc
 				end
@@ -132,6 +130,7 @@ for _, extracted in allExtracted do
 					contents ..= "`"
 					contents ..= "\n\n"
 					contents ..= r.desc
+					contents ..= "`"
 				end
 			end
 			table.insert(fnContents, contents)

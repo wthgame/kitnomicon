@@ -17,6 +17,106 @@ local std = require(ReplicatedStorage:WaitForChild("KitStd"))
 
 ## Properties
 
+### animation
+
+```luau
+
+KitStd.animation: unknown
+
+```
+
+Animation utilities including tweens.
+
+### assets
+
+```luau
+
+KitStd.assets: unknown
+
+```
+
+Image and sound assets used by Welcome To Hell.
+
+### audio
+
+```luau
+
+KitStd.audio: unknown
+
+```
+
+Audio utilities.
+
+### bindings
+
+```luau
+
+KitStd.bindings: KitStdBindings
+
+```
+
+Bindings to Welcome To Hell's controllers.
+
+### character
+
+```luau
+
+KitStd.character: unknown
+
+```
+
+Character utilities.
+
+### collections
+
+```luau
+
+KitStd.collections: unknown
+
+```
+
+Math utilities.
+
+### collections
+
+```luau
+
+KitStd.collections: unknown
+
+```
+
+Collection utilities and implementations.
+
+### color
+
+```luau
+
+KitStd.color: unknown
+
+```
+
+Color utilities.
+
+### logger
+
+```luau
+
+KitStd.logger: unknown
+
+```
+
+Logger implementation.
+
+### physics
+
+```luau
+
+KitStd.physics: unknown
+
+```
+
+Physic utilities.
+
 ### prelude
 
 ```luau
@@ -25,347 +125,22 @@ KitStd.prelude: KitStdPrelude
 
 ```
 
-gng
+Reference to the prelude, the list of things that most KitScripts will use,
+and is kept as small as possible.
+
+### touch
+
+```luau
+
+KitStd.touch: unknown
+
+```
+
+Touch utilities.
 
 
 
 ## Functions
-
-### connectActivation
-
-```luau
-function KitStd.connectActivation(
-	outerTrove: trove.Trove,
-	connectTo: T & Instance,
-	onActivated: (outerTrove: trove.Trove, instance: T, activationTrove: trove.Trove) -> (),
-	defaultMode: ActivationMode?
-): ()
-```
-
-Calls the callback when the connected instance is activated based on it's
-`ActivationMode` attribute:
-
-* If `ActivationMode == "Touch" and connectTo:IsA("BasePart")`, activates
-  when the supported instances touch the connected instance
-* If `ActivationMode == "Prompt" and connectTo:IsA("BasePart")`,
-  activates when a `connectTo.ActivationProximityPrompt` ProximityPrompt -
-  or creates one - is triggered. `MaxActivationDistance` is also set.
-* If `ActivationMode == "Click" and connectTo:IsA("BasePart")`,
-  activates when a `connectTo.ActivationClickDetector` ClickDetector - or
-  creates one- is triggered. `MaxActivationDistance` is also set.
-* If `ActivationMode == "KeyCode"`, it activates when `ActivationKeyCode`
-  is triggered.
-
-`onActivated` receives the connected instance so callbacks can be cached.
-
-`onActivated` is only called if the `Active` attribute is enabled.
-
-Once activated, the consumer should cleanup the given trove and reconnect
-once it is deactivated.
-
-This implements the following attributes for the connected instance:
-* `ActivationMode`
-* `MaxActivationDistance`
-* `ActivationKeyCode` if `ActivationMode == "Control"`
-* `SupportsCharacter` if `ActivationMode == "Control"`
-* `SupportsBoxes` if `ActivationMode == "Control"`
-* `BoxesRequiresMatchingId` if `ActivationMode == "Control"`
-* `RequiredBoxId` if `ActivationMode == "Control"`
-
-```Lua
-Self:onLoaded(function(trove, self)
-    local activationTrove = trove:extend()
-    local isActivated = false
-
-    local function onSelfActivated()
-        if not isActivated then
-            isActivated = true
-            activationTrove:clean()
-            print("Activated!")
-
-            task.delay(3, function()
-                isActivated = false
-                activationTrove = trove:extend()
-                prelude.connectActivation(activationTrove, connectTo, onSelfActivated)
-                print("Deactivated!")
-            end)
-        end
-    end
-
-    prelude.connectActivation(activationTrove, connectTo, onSelfActivated)
-end)
-```
-
-#### Parameters
-
-##### outerTrove `trove.Trove`
-
-
-
-##### connectTo `T & Instance`
-
-
-
-##### onActivated `(outerTrove: trove.Trove, instance: T, activationTrove: trove.Trove) -> ()`
-
-
-
-##### defaultMode `ActivationMode?`
-
-
-
----
-
-### getCharacter
-
-```luau
-function KitStd.getCharacter(): types.Character
-
-```
-
-Returns current character if it exists. Otherwise, wait for it to be added.
-
-#### Returns
-
-#####  `types.Character`
-
-
-
----
-
-### getHumanoid
-
-```luau
-function KitStd.getHumanoid(): Humanoid
-
-```
-
-Returns the character's Humanoid if it exists. Otherwise, waits for it to
-be added.
-
-#### Returns
-
-#####  `Humanoid`
-
-
-
----
-
-### getHumanoidRootPart
-
-```luau
-function KitStd.getHumanoidRootPart(): BasePart
-
-```
-
-Returns the character's HumanoidRootPart if it exists. Otherwise, wait for
-it to be added.
-
-#### Returns
-
-#####  `BasePart`
-
-
-
----
-
-### getMaybeCharacter
-
-```luau
-function KitStd.getMaybeCharacter(): types.Character?
-
-```
-
-Returns the local player's character if it exists
-
-#### Returns
-
-#####  `types.Character?`
-
-
-
----
-
-### getMaybeHumanoid
-
-```luau
-function KitStd.getMaybeHumanoid(): Humanoid?
-
-```
-
-Returns the character's Humanoid if it exists.
-
-#### Returns
-
-#####  `Humanoid?`
-
-
-
----
-
-### getMaybeHumanoidRootPart
-
-```luau
-function KitStd.getMaybeHumanoidRootPart(): BasePart?
-
-```
-
-Returns the character's HumanoidRootPart if it exists.
-
-#### Returns
-
-#####  `BasePart?`
-
-
-
----
-
-### inferAndPlaySound
-
-```luau
-function KitStd.inferAndPlaySound(
-	instance: Instance,
-	defaultSound: string?,
-	searchFor: string?,
-	config: types.PlaySoundConfig?,
-	spatial: boolean?
-): ()
-```
-
-Tries to infer a sound from the instance's attributes or a Sound instance.
-If no sound is found, plays the specified default sound. Can specify the
-name of the attribute or child to search for, or defaults to searching for
-"Sound".
-
-```Lua
-prelude.inferAndPlaySound(btn, std.SOUND_ASSETS.button, "PressSound")
-```
-
-#### Parameters
-
-##### instance `Instance`
-
-
-
-##### defaultSound `string?`
-
-
-
-##### searchFor `string?`
-
-
-
-##### config `types.PlaySoundConfig?`
-
-
-
-##### spatial `boolean?`
-
-
-
----
-
-### isCharacter
-
-```luau
-function KitStd.isCharacter(character: Instance): boolean
-
-```
-
-Returns true if a model is a character
-
-#### Parameters
-
-##### character `Instance`
-
-#### Returns
-
-#####  `boolean`
-
-
-
----
-
-### isCharacterAlive
-
-```luau
-function KitStd.isCharacterAlive(): boolean
-
-```
-
-Returns true if the character is alive.
-
-#### Returns
-
-#####  `boolean`
-
-
-
----
-
-### isFromCharacter
-
-```luau
-function KitStd.isFromCharacter(instance: Instance): boolean
-
-```
-
-Returns true if the given instance is a descendant of the local character.
-
-#### Parameters
-
-##### instance `Instance`
-
-#### Returns
-
-#####  `boolean`
-
-
-
----
-
-### isFromMaybeCharacter
-
-```luau
-function KitStd.isFromMaybeCharacter(instance: Instance): boolean
-
-```
-
-Returns true if the character exists and the given instance is a descendant
-of the local character.
-
-#### Parameters
-
-##### instance `Instance`
-
-#### Returns
-
-#####  `boolean`
-
-
-
----
-
-### isLocalPlayerCharacter
-
-```luau
-function KitStd.isLocalPlayerCharacter(character: Instance): boolean
-
-```
-
-Returns true if a model is the local player's character
-
-#### Parameters
-
-##### character `Instance`
-
-#### Returns
-
-#####  `boolean`
-
-
-
----
 
 ### never
 
@@ -380,86 +155,7 @@ Never returns.
 
 #####  `never`
 
-
-
----
-
-### playSound
-
-```luau
-function KitStd.playSound(
-	asset: string | Sound,
-	from: Instance?,
-	config: types.PlaySoundConfig?): ()
-```
-
-Plays a sound from an asset string or cloned from a Sound instance.
-
-#### Parameters
-
-##### asset `string | Sound`
-
-
-
-##### from `Instance?`
-
-
-
-##### config `types.PlaySoundConfig?`
-
-
-
----
-
-### playSoundFromGameAssets
-
-```luau
-function KitStd.playSoundFromGameAssets(
-	key: string,
-	from: Instance?,
-	config: types.PlaySoundConfig?): ()
-```
-
-Plays a sound from the game's assets module. See the sounds table in the
-Replicated.WTHShared.assets module for what sounds can be played.
-
-#### Parameters
-
-##### key `string`
-
-
-
-##### from `Instance?`
-
-
-
-##### config `types.PlaySoundConfig?`
-
-
-
----
-
-### populateConstraintAttachments
-
-```luau
-function KitStd.populateConstraintAttachments(constraint: Constraint): (Attachment, Attachment)
-```
-
-Creates 2 attachments and sets them to the constraint attachment properties.
-
-#### Parameters
-
-##### constraint `Constraint`
-
-#### Returns
-
-#####  `Attachment`
-
-
-
-#####  `Attachment`
-
-
+`
 
 ---
 
@@ -474,65 +170,10 @@ function KitStd.roundColor(color: Color3): Color3
 
 #### Parameters
 
-##### color `Color3`
+##### color <small>`: Color3`</small>
 
 #### Returns
 
 #####  `Color3`
 
-
-
----
-
-### waitForCharacter
-
-```luau
-function KitStd.waitForCharacter(): types.Character
-
-```
-
-Waits for and returns the local player's character when it is added
-
-#### Returns
-
-#####  `types.Character`
-
-
-
----
-
-### weld
-
-```luau
-function KitStd.weld(
-	trove: trove.Trove,
-	target: BasePart,
-	weldToTarget: BasePart,
-	unanchorTarget: boolean?
-): WeldConstraint
-
-```
-
-Welds the `weldToTarget` to the `target`. Optionally unanchors the
-`weldToTarget`.
-
-#### Parameters
-
-##### trove `trove.Trove`
-
-
-
-##### target `BasePart`
-
-
-
-##### weldToTarget `BasePart`
-
-
-
-##### unanchorTarget `boolean?`
-
-#### Returns
-
-#####  `WeldConstraint`
-
+`

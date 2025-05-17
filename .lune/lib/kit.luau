@@ -1,7 +1,6 @@
 local remodel = require("./remodel")
 local stdio = require("@lune/stdio")
 local roblox = require("@lune/roblox")
-local process = require("@lune/process")
 local fs = require("@lune/fs")
 local fsUtils = require("./fs-utils")
 
@@ -28,7 +27,6 @@ local function downloadKitFile()
 end
 
 local function readKitFile(): roblox.DataModel
-	downloadKitFile()
 	return remodel.readPlaceFile(KIT_FILE)
 end
 
