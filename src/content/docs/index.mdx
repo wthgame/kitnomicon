@@ -1,36 +1,58 @@
 ---
-title: Welcome to Starlight
+title: The Kitnomicon
 description: Get started building your docs site with Starlight.
-template: splash
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /kitnomicon/guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard } from '@astrojs/starlight/components';
 
-## Next steps
+If you're happy just building towers and keeping things primitive with
+Welcome To Hell, you can probably skip this. You don't need the Kitnomicon to
+build outstanding towers. But if you're the kind of person who wants to know how
+everything works, this book contains lots of useful information.
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `/kitnomicon/src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `/kitnomicon/src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+Unlike [The Buildnomicon], we're going to assume background familiarity with
+Roblox Studio and the Kit. Consider the book as what's in the Kit, not an
+introduction to it. If you're planning on creating your own kit objects or
+exploring the standard library, you'll need to be comfortable with Luau and
+working with its type system. If those topics feel new, check out these
+resources first:
+
+<LinkCard
+  title="The Buildnomicon"
+  href="https://wthgame.github.io/buildnomicon"
+  description="Every builder's comprehensive journey into Welcome To Hell."
+/>
+
+<LinkCard
+  title="Luau"
+  href="https://luau.org/"
+  description="Documentation for the Luau language"
+/>
+
+This book only covers the stable Kit. Nightly Kit releases are planned once
+Act 3 or the Beta is released.
+
+Finally, this isn't the official specification for the Kit. One day, it will be
+made. For now, the Kitnomicon is the closest thing Welcome To Hell has to a
+specification.
+
+[The Buildnomicon]: https://wthgame.github.io/buildnomicon
+
+## Using The Kitnomicon
+
+### Typings
+
+On many reference pages, you'll see type annotations such as:
+
+```luau
+function KitStd.connectActivation(
+  outerTrove: trove.Trove,
+  connectTo: T & Instance,
+  onActivated: (outerTrove: trove.Trove, instance: T, activationTrove: trove.Trove) -> (),
+  defaultMode: ActivationMode?
+): ()
+```
+
+While these type annotations are designed to be Luau-like, it is ultimately
+psuedocode included as a developer aid. For fully accurate and syntactically
+valid type information, please refer to the source code directly.

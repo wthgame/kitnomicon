@@ -15,14 +15,24 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: "Intro",
-					items: [{ label: "Installation", slug: "intro/installation" }],
+					items: [
+						{
+							label: "The Kitnomicon",
+							slug: "",
+						},
+						{
+							label: "Contributions",
+							slug: "contributions",
+						},
+						{
+							label: "Installation",
+							slug: "installation",
+						},
+					],
 				},
 				{
 					label: "Guides",
-					items: [
-						{ label: "Example Guide", slug: "guides/example" },
-						{ label: "Writing KitTagObjects", slug: "guides/writing-tag-objects" },
-					],
+					autogenerate: { directory: "guides" },
 				},
 				{
 					label: "Objects",
