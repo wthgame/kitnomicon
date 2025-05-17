@@ -15,6 +15,20 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local std = require(ReplicatedStorage:WaitForChild("KitStd"))
 ```
 
+## Properties
+
+### prelude
+
+```luau
+
+KitStd.prelude: KitStdPrelude
+
+```
+
+gng
+
+
+
 ## Functions
 
 ### connectActivation
