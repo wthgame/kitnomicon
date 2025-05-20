@@ -9,31 +9,61 @@ Implements activation for kit objects.
 
 ## Properties
 
+### Activatable
+
+```luau
+
+KitStdActivation.Activatable: Attribute<boolean>
+
+```
+
+Whether if a kit object can be activated.
+
+### ActivationBehavior
+
+```luau
+
+KitStdActivation.ActivationBehavior: Attribute<ActivationBehavior>
+
+```
+
+How to handle activation behavior.
+
+### ActivationHumanoidStateType
+
+```luau
+
+KitStdActivation.ActivationHumanoidStateType: Attribute<Enum.HumanoidStateType?>
+
+```
+
+TBA
+
+### ActivationInterval
+
+```luau
+
+KitStdActivation.ActivationInterval: Attribute<number?>
+
+```
+
+TBA
+
 ### ActivationKeyCode
 
 ```luau
 
-KitStdActivation.ActivationKeyCode: InstanceAttribute<Enum.KeyCode>
+KitStdActivation.ActivationKeyCode: Attribute<Enum.KeyCode?>
 
 ```
 
 TBA
 
-### ActivationMode
+### Enabled
 
 ```luau
 
-KitStdActivation.ActivationMode: InstanceAttribute<ActivationMode>
-
-```
-
-TBA
-
-### Active
-
-```luau
-
-KitStdActivation.Active: InstanceAttribute<boolean>
+KitStdActivation.Enabled: Attribute<boolean>
 
 ```
 
@@ -43,7 +73,7 @@ TBA
 
 ```luau
 
-KitStdActivation.MaxActivationDistance: InstanceAttribute<number>
+KitStdActivation.MaxActivationDistance: Attribute<number?>
 
 ```
 
@@ -53,14 +83,13 @@ TBA
 
 ## Functions
 
-### connectActivation
+### onActivated
 
 ```luau
-function KitStdActivation.connectActivation(
-	outerTrove: trove.Trove,
-	connectTo: T & Instance,
-	onActivated: (outerTrove: trove.Trove, instance: T, activationTrove: trove.Trove) -> (),
-	defaultMode: ActivationMode?
+function KitStdActivation.onActivated(
+	instanceTrove: trove.Trove,
+	instance: T & Instance,
+	onActivated: (trove: trove.Trove, instance: T) -> ()
 ): ()
 ```
 
@@ -111,17 +140,13 @@ end)
 
 #### Parameters
 
-##### outerTrove <small>`: trove.Trove`</small>
+##### instanceTrove <small>`: trove.Trove`</small>
 
 
 
-##### connectTo <small>`: T & Instance`</small>
+##### instance <small>`: T & Instance`</small>
 
 
 
-##### onActivated <small>`: (outerTrove: trove.Trove, instance: T, activationTrove: trove.Trove) -> ()`</small>
-
-
-
-##### defaultMode <small>`: ActivationMode?`</small>
+##### onActivated <small>`: (trove: trove.Trove, instance: T) -> ()`</small>
 

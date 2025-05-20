@@ -14,15 +14,6 @@ local MIRROR_DIR = "mirror"
 local Enum = (roblox :: any).Enum :: typeof(Enum)
 
 local function downloadKitFile()
-	if remodel.isFile(KIT_FILE) then
-		local shouldRedownload = stdio.prompt("confirm", "Do you want to redownload the kit from Roblox?")
-		if not shouldRedownload then
-			remodel.readPlaceFile(KIT_FILE)
-			return
-		end
-	end
-
-	print("Downloading kit...")
 	remodel.writePlaceFile(KIT_FILE, remodel.readPlaceAsset(KIT_DEVELOPMENT_PLACE_ID))
 end
 

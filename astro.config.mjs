@@ -11,6 +11,13 @@ export default defineConfig({
 
 	integrations: [
 		starlight({
+			social: [
+				{
+					icon: "github",
+					label: "GitHub",
+					href: "https://github.com/wthgame/kitnomicon",
+				},
+			],
 			title: "The Kitnomicon",
 			sidebar: [
 				{

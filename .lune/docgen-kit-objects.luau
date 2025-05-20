@@ -13,7 +13,6 @@ local function sortByName(lhs: any, rhs: any)
 	return lhs.name < rhs.name
 end
 
-kit.writeKitModules()
 assert(fs.isDir(coreKitScriptsDir), `Cannot collect core KitScripts at {coreKitScriptsDir}`)
 
 local allExtracted = MoonwaveExtractor.extract(coreKitScriptsDir)
@@ -66,7 +65,7 @@ for _, extracted in allExtracted do
 		end
 	end
 
-	local path = fsUtils.path(outputDir, extracted.name:lower() .. ".md")
+	local path = fsUtils.path(outputDir, extracted.name .. ".md")
 	print("Writing to path", path)
 	fs.writeFile(path, contents)
 end

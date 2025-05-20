@@ -12,7 +12,6 @@ local function sortByName(lhs: any, rhs: any)
 	return lhs.name < rhs.name
 end
 
-kit.writeKitModules()
 assert(fs.isDir(stdDir), `Cannot collect KitStd at {stdDir}`)
 
 local allExtracted = MoonwaveExtractor.extract(stdDir)
