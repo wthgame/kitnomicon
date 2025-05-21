@@ -8,6 +8,7 @@ export type MoonwaveFunctionParameter = MoonwaveExtractor.MoonwaveFunctionParame
 export type MoonwaveInterface = MoonwaveExtractor.MoonwaveInterface
 export type MoonwaveLuaType = MoonwaveExtractor.MoonwaveLuaType
 export type MoonwaveProperty = MoonwaveExtractor.MoonwaveProperty
+export type MoonwaveType = MoonwaveExtractor.MoonwaveType
 export type MoonwaveSource = MoonwaveExtractor.MoonwaveSource
 
 local NEW_LINE = "\n"
@@ -120,6 +121,21 @@ local function writeMoonwaveProperty(
 	return contents
 end
 
+local function writeMoonwaveType(type: MoonwaveExtractor.MoonwaveType)
+	local contents = "```luau"
+	contents ..= NEW_LINE
+	contents ..= "export type "
+	contents ..= type.name
+	contents ..= " = "
+	contents ..= type.lua_type
+	contents ..= "\n\n"
+	contents ..= "```"
+	contents ..= LINE_BREAK
+	contents ..= type.desc
+	contents ..= LINE_BREAK
+	return contents
+end
+
 return {
 	NEW_LINE = NEW_LINE,
 	LINE_BREAK = LINE_BREAK,
@@ -127,4 +143,5 @@ return {
 	heading = heading,
 	writeMoonwaveFunction = writeMoonwaveFunction,
 	writeMoonwaveProperty = writeMoonwaveProperty,
+	writeMoonwaveType = writeMoonwaveType,
 }

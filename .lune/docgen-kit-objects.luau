@@ -64,6 +64,7 @@ for _, extracted in allExtracted do
 	local attributeOverviews = {}
 	local properties = {}
 	local propertyOverviews = {}
+	local types = {}
 
 	local extractedProperties = table.clone(extracted.properties)
 	table.sort(extractedProperties, sortByName)
@@ -72,17 +73,19 @@ for _, extracted in allExtracted do
 		table.move(ACTIVATION_ATTRIBUTES, 1, #ACTIVATION_ATTRIBUTES, #extractedProperties + 1, extractedProperties)
 	end
 
-	if #extractedProperties > 0 then
-		for _, property in extractedProperties do
-			local isAttribute = property.tags and table.find(property.tags, ATTRIBUTE_TAG)
-			local thisContents = moonwave.heading(isAttribute and 3 or 4, property.name)
-				.. moonwave.writeMoonwaveProperty(property, extracted)
-			table.insert(if isAttribute then attributes else properties, thisContents)
-			table.insert(
-				if isAttribute then attributeOverviews else propertyOverviews,
-				`\t{property.name}: {property.lua_type:gsub("\n", "\n\t")},`
-			)
-		end
+	for _, property in extractedProperties do
+		local isAttribute = property.tags and table.find(property.tags, ATTRIBUTE_TAG)
+		local thisContents = moonwave.heading(isAttribute and 3 or 4, property.name)
+			.. moonwave.writeMoonwaveProperty(property, extracted)
+		table.insert(if isAttribute then attributes else properties, thisContents)
+		table.insert(
+			if isAttribute then attributeOverviews else propertyOverviews,
+			`\t{property.name}: {property.lua_type:gsub("\n", "\n\t")},`
+		)
+	end
+
+	for _, type in extracted.types do
+		table.insert(types, moonwave.heading(4, type.name) .. moonwave.writeMoonwaveType(type))
 	end
 
 	local hasAttributeOverviews = #attributeOverviews > 0
@@ -121,15 +124,24 @@ for _, extracted in allExtracted do
 		contents ..= table.concat(attributes, "\n\n")
 	end
 
+	local hasTypes = #types > 0
 	local hasOtherProperties = #properties > 0
-	local hasAPIMembers = hasOtherProperties
+	local hasAPIMembers = hasOtherProperties or hasTypes
 	if hasAPIMembers then
 		contents ..= moonwave.heading(2, "API")
+
+		if hasTypes then
+			contents ..= moonwave.heading(3, "Types")
+			contents ..= table.concat(types, "\n\n")
+		end
+
 		if hasOtherProperties then
 			contents ..= moonwave.heading(3, "Properties")
 			contents ..= table.concat(properties, "\n\n")
 		end
 	end
+
+	print(extracted.types)
 
 	local path = fsUtils.path(outputDir, extracted.name .. ".md")
 	print("Writing to path", path)

@@ -52,13 +52,21 @@ export type MoonwaveProperty = {
 	source: MoonwaveSource,
 }
 
+export type MoonwaveType = {
+	name: string,
+	desc: string,
+	lua_type: string,
+	tags: { string }?,
+	source: MoonwaveSource,
+}
+
 export type MoonwaveClass = {
 	name: string,
 	desc: string,
 	since: string?,
 	source: MoonwaveSource,
 	functions: { MoonwaveFunction },
-	types: { MoonwaveInterface },
+	types: { MoonwaveType },
 	properties: { MoonwaveProperty },
 	tags: { string }?,
 }
