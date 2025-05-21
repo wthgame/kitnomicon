@@ -15,7 +15,7 @@ Teleporter = {
 	KeepVelocity: std.Attribute<boolean>,
 	PlaySound: std.Attribute<boolean>,
 	Seamless: std.Attribute<boolean>,
-	SeamlessMeasurement: std.Attribute<"Relative" | "World">,
+	SeamlessMeasurement: std.Attribute<SeamlessMeasurement>,
 	SeamlessOverflow: std.Attribute<boolean>,
 	TeleporterId: std.Attribute<string>,
 	Activatable: std.Attribute<boolean>,
@@ -89,7 +89,7 @@ end up in the bottom northwest of the destination.
 ### SeamlessMeasurement
 
 ```luau
-Teleporter.SeamlessMeasurement: std.Attribute<"Relative" | "World">
+Teleporter.SeamlessMeasurement: std.Attribute<SeamlessMeasurement>
 
 ```
 
@@ -150,4 +150,26 @@ Teleporter.ActivationBehavior: std.Attribute<ActivationBehavior>
 ```
 
 How should this object be activated. See the [Activation](../../guides/activation) page.
+
+
+
+## API
+
+
+
+### Types
+
+
+
+#### SeamlessMeasurement
+
+```luau
+export type SeamlessMeasurement = "Relative" | "World"
+
+```
+
+The proportions used to calculate the teleport if `Seamless` is enabled.
+Relative proportions use percentage proportions of the `Teleporter` and the
+`TeleporterDestination`. World proportions use studs of the `Teleporter` and
+the `TeleporterDestination`
 
