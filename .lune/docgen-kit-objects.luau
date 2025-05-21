@@ -1,10 +1,30 @@
 local kit = require("./lib/kit")
 local fsUtils = require("./lib/fs-utils")
 local fs = require("@lune/fs")
-local MoonwaveExtractor = require("./lib/moonwave-extractor")
+local moonwave = require("./lib/moonwave")
 
 local BLACKLISTED = { CoreTemplate = true, ["init.luau"] = true }
-local KIT_OBJECT_TAG = "KitObjectTag"
+local KIT_OBJECT_TAG = "KitObject"
+local ATTRIBUTE_TAG = "Attribute"
+local ACTIVATABLE_TAG = "Activatable"
+
+-- TODO: is there a better way than this?
+local ACTIVATION_ATTRIBUTES: { moonwave.MoonwaveProperty } = {
+	{
+		name = "Activatable",
+		desc = "Whether this object can be activated. See the [Activation](../../guides/activation) page.",
+		lua_type = "boolean",
+		tags = { "Attribute" },
+		source = nil :: any,
+	},
+	{
+		name = "ActivationBehavior",
+		desc = "How should this object be activated. See the [Activation](../../guides/activation) page.",
+		lua_type = "ActivationBehavior",
+		tags = { "Attribute" },
+		source = nil :: any,
+	},
+}
 
 local coreKitScriptsDir = fsUtils.path(kit.MIRROR_DIR, "ReplicatedStorage", "KitScripts", "Core")
 local outputDir = fsUtils.path("src", "content", "docs", "objects")
@@ -15,7 +35,7 @@ end
 
 assert(fs.isDir(coreKitScriptsDir), `Cannot collect core KitScripts at {coreKitScriptsDir}`)
 
-local allExtracted = MoonwaveExtractor.extract(coreKitScriptsDir)
+local allExtracted = moonwave.extract(coreKitScriptsDir)
 table.sort(allExtracted, sortByName)
 
 for _, extracted in allExtracted do
@@ -40,28 +60,74 @@ for _, extracted in allExtracted do
 	contents ..= "\n\n"
 	contents ..= extracted.desc
 
-	-- NOTE: for this tag we  treat moonwave properties as instance attributes
-	if #extracted.properties > 0 then
-		table.sort(extracted.properties, sortByName)
-		contents ..= "\n\n"
-		contents ..= "## Attributes"
-		contents ..= "\n\n"
-		for _, attribute in extracted.properties do
-			contents ..= "### "
-			contents ..= attribute.name
-			contents ..= "\n\n"
-			contents ..= "```luau"
-			contents ..= "\n\n"
-			contents ..= extracted.name
-			contents ..= "."
-			contents ..= attribute.name
-			contents ..= ": "
-			contents ..= attribute.lua_type
-			contents ..= "\n\n"
-			contents ..= "```"
-			contents ..= "\n\n"
-			contents ..= attribute.desc
-			contents ..= "\n\n"
+	local attributes = {}
+	local attributeOverviews = {}
+	local properties = {}
+	local propertyOverviews = {}
+
+	local extractedProperties = table.clone(extracted.properties)
+	table.sort(extractedProperties, sortByName)
+
+	if table.find(extracted.tags, ACTIVATABLE_TAG) then
+		table.move(ACTIVATION_ATTRIBUTES, 1, #ACTIVATION_ATTRIBUTES, #extractedProperties + 1, extractedProperties)
+	end
+
+	if #extractedProperties > 0 then
+		for _, property in extractedProperties do
+			local isAttribute = property.tags and table.find(property.tags, ATTRIBUTE_TAG)
+			local thisContents = moonwave.heading(isAttribute and 3 or 4, property.name)
+				.. moonwave.writeMoonwaveProperty(property, extracted)
+			table.insert(if isAttribute then attributes else properties, thisContents)
+			table.insert(
+				if isAttribute then attributeOverviews else propertyOverviews,
+				`\t{property.name}: {property.lua_type:gsub("\n", "\n\t")},`
+			)
+		end
+	end
+
+	local hasAttributeOverviews = #attributeOverviews > 0
+	local hasPropertyOverviews = #propertyOverviews > 0
+	if hasAttributeOverviews or hasPropertyOverviews then
+		contents ..= moonwave.LINE_BREAK
+		contents ..= "```luau"
+		contents ..= moonwave.NEW_LINE
+		contents ..= extracted.name
+		contents ..= " = "
+		contents ..= "{"
+		contents ..= moonwave.NEW_LINE
+
+		if hasAttributeOverviews then
+			contents ..= "\t-- Attributes"
+			contents ..= moonwave.NEW_LINE
+			contents ..= table.concat(attributeOverviews, moonwave.NEW_LINE)
+			contents ..= moonwave.NEW_LINE
+		end
+
+		if hasPropertyOverviews then
+			contents ..= "\t-- API"
+			contents ..= moonwave.NEW_LINE
+			contents ..= table.concat(propertyOverviews, moonwave.NEW_LINE)
+			contents ..= moonwave.NEW_LINE
+		end
+
+		contents ..= "}"
+		contents ..= moonwave.NEW_LINE
+		contents ..= "```"
+		contents ..= moonwave.LINE_BREAK
+	end
+
+	if #attributes > 0 then
+		contents ..= moonwave.heading(2, "Attributes")
+		contents ..= table.concat(attributes, "\n\n")
+	end
+
+	local hasOtherProperties = #properties > 0
+	local hasAPIMembers = hasOtherProperties
+	if hasAPIMembers then
+		contents ..= moonwave.heading(2, "API")
+		if hasOtherProperties then
+			contents ..= moonwave.heading(3, "Properties")
+			contents ..= table.concat(properties, "\n\n")
 		end
 	end
 

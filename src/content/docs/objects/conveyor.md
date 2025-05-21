@@ -7,22 +7,36 @@ description: Conveyors speeds contacting objects facing it's direction.
 
 Conveyors speeds contacting objects facing it's direction.
 
+```luau
+Conveyor = {
+	-- Attributes
+	Speed: number,
+	SynchronizeConveyorBeams: boolean,
+}
+```
+
+
+
 ## Attributes
+
+
 
 ### Speed
 
 ```luau
-
 Conveyor.Speed: number
 
 ```
 
 The speed in studs per second that objects move along the conveyor.
 
+
+
+
+
 ### SynchronizeConveyorBeams
 
 ```luau
-
 Conveyor.SynchronizeConveyorBeams: boolean
 
 ```

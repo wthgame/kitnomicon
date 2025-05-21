@@ -7,30 +7,48 @@ description: SoundPlayers, when actviated, emit a sound effect inferred from it'
 
 SoundPlayers, when actviated, emit a sound effect inferred from it's
 attributes or children.
-
 The SoundPlayer will play the first thing found in order:
-
 1. A `PlayFromAssets` key
 2. A `Sound` attribute
 3. A `Sound` instance named "Sound"
 
+```luau
+SoundPlayer = {
+	-- Attributes
+	PlayFromAssets: keyof<typeof(std.audio.AUDIO_ASSETS)>?,
+	Sound: string?,
+	Spatial: boolean,
+	Speed: number?,
+	Volume: number?,
+	Activatable: boolean,
+	ActivationBehavior: ActivationBehavior,
+}
+```
+
+
+
 ## Attributes
+
+
 
 ### PlayFromAssets
 
 ```luau
-
-SoundPlayer.PlayFromAssets: keyof<AUDIO_ASSETS>?
+SoundPlayer.PlayFromAssets: keyof<typeof(std.audio.AUDIO_ASSETS)>?
 
 ```
 
-TBA
-This overrides the Sound attribute or a Sound instance.
+Plays a sound directly from Welcome To Hell's audio assets.
+If specified, this attribute overrides any Sound attribute or Sound instance
+parented under the SoundPlayer.
+
+
+
+
 
 ### Sound
 
 ```luau
-
 SoundPlayer.Sound: string?
 
 ```
@@ -38,10 +56,13 @@ SoundPlayer.Sound: string?
 An asset ID that should be used if a `PlayFromAssets` attribute or a
 `Sound` instance isn't present.
 
+
+
+
+
 ### Spatial
 
 ```luau
-
 SoundPlayer.Spatial: boolean
 
 ```
@@ -49,10 +70,13 @@ SoundPlayer.Spatial: boolean
 Toggles if the sound should be parented to the part, so played "spatially",
 or parented to nil, so played "globally".
 
+
+
+
+
 ### Speed
 
 ```luau
-
 SoundPlayer.Speed: number?
 
 ```
@@ -61,14 +85,43 @@ Divides the sound's duration, ie. value of 1 means normal speed, value
 of 2 means double speed, value of 0.5 means half speed. If specified, this
 overrides the `PlaybackSpeed` property in any Sound instance.
 
+
+
+
+
 ### Volume
 
 ```luau
-
 SoundPlayer.Volume: number?
 
 ```
 
 How loud should the sound be. If specified, this overrides the `Volume`
 property in any Sound instance.
+
+
+
+
+
+### Activatable
+
+```luau
+SoundPlayer.Activatable: boolean
+
+```
+
+Whether this object can be activated. See the [Activation](../../guides/activation) page.
+
+
+
+
+
+### ActivationBehavior
+
+```luau
+SoundPlayer.ActivationBehavior: ActivationBehavior
+
+```
+
+How should this object be activated. See the [Activation](../../guides/activation) page.
 

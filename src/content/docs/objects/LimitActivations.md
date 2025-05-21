@@ -7,12 +7,23 @@ description: Limits the amount of activations for a given kit object.
 
 Limits the amount of activations for a given kit object.
 
+```luau
+LimitActivations = {
+	-- Attributes
+	MaxActivations: number,
+	ResetWhenUnactivatable: boolean,
+}
+```
+
+
+
 ## Attributes
+
+
 
 ### MaxActivations
 
 ```luau
-
 LimitActivations.MaxActivations: number
 
 ```
@@ -20,10 +31,13 @@ LimitActivations.MaxActivations: number
 The amount of activations before the limited kit object should not be
 activatable.
 
+
+
+
+
 ### ResetWhenUnactivatable
 
 ```luau
-
 LimitActivations.ResetWhenUnactivatable: boolean
 
 ```
