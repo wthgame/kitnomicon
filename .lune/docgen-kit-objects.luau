@@ -75,6 +75,11 @@ for _, extracted in allExtracted do
 
 	for _, property in extractedProperties do
 		local isAttribute = property.tags and table.find(property.tags, ATTRIBUTE_TAG)
+		-- FIXME: do this manually later
+		if isAttribute then
+			property = table.clone(property)
+			property.lua_type = `std.Attribute<{property.lua_type}>`
+		end
 		local thisContents = moonwave.heading(isAttribute and 3 or 4, property.name)
 			.. moonwave.writeMoonwaveProperty(property, extracted)
 		table.insert(if isAttribute then attributes else properties, thisContents)
@@ -140,8 +145,6 @@ for _, extracted in allExtracted do
 			contents ..= table.concat(properties, "\n\n")
 		end
 	end
-
-	print(extracted.types)
 
 	local path = fsUtils.path(outputDir, extracted.name .. ".md")
 	print("Writing to path", path)

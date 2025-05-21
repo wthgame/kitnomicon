@@ -11,13 +11,13 @@ it's UV coordinates.
 ```luau
 MovingTexture = {
 	-- Attributes
-	HorizontalLoop: boolean,
-	HorizontalOffset: number,
-	HorizontalSpeed: number,
-	Synchronized: boolean,
-	VerticalLoop: boolean,
-	VerticalOffset: number,
-	VerticalSpeed: number,
+	HorizontalLoop: std.Attribute<boolean>,
+	HorizontalOffset: std.Attribute<number>,
+	HorizontalSpeed: std.Attribute<number>,
+	Synchronized: std.Attribute<boolean>,
+	VerticalLoop: std.Attribute<boolean>,
+	VerticalOffset: std.Attribute<number>,
+	VerticalSpeed: std.Attribute<number>,
 }
 ```
 
@@ -30,7 +30,7 @@ MovingTexture = {
 ### HorizontalLoop
 
 ```luau
-MovingTexture.HorizontalLoop: boolean
+MovingTexture.HorizontalLoop: std.Attribute<boolean>
 
 ```
 
@@ -45,7 +45,7 @@ errors.
 ### HorizontalOffset
 
 ```luau
-MovingTexture.HorizontalOffset: number
+MovingTexture.HorizontalOffset: std.Attribute<number>
 
 ```
 
@@ -59,7 +59,7 @@ texture. Defaults to the Texture's `OffsetStudsU` when loaded.
 ### HorizontalSpeed
 
 ```luau
-MovingTexture.HorizontalSpeed: number
+MovingTexture.HorizontalSpeed: std.Attribute<number>
 
 ```
 
@@ -74,7 +74,7 @@ moves it left.
 ### Synchronized
 
 ```luau
-MovingTexture.Synchronized: boolean
+MovingTexture.Synchronized: std.Attribute<boolean>
 
 ```
 
@@ -94,7 +94,7 @@ MovingTexture to adopt the new texture speed.
 ### VerticalLoop
 
 ```luau
-MovingTexture.VerticalLoop: boolean
+MovingTexture.VerticalLoop: std.Attribute<boolean>
 
 ```
 
@@ -109,7 +109,7 @@ errors.
 ### VerticalOffset
 
 ```luau
-MovingTexture.VerticalOffset: number
+MovingTexture.VerticalOffset: std.Attribute<number>
 
 ```
 
@@ -123,7 +123,7 @@ Defaults to the Texture's `OffsetStudsV` when loaded.
 ### VerticalSpeed
 
 ```luau
-MovingTexture.VerticalSpeed: number
+MovingTexture.VerticalSpeed: std.Attribute<number>
 
 ```
 

@@ -10,8 +10,8 @@ Limits the amount of activations for a given kit object.
 ```luau
 LimitActivations = {
 	-- Attributes
-	MaxActivations: number,
-	ResetWhenUnactivatable: boolean,
+	MaxActivations: std.Attribute<number>,
+	ResetWhenUnactivatable: std.Attribute<boolean>,
 }
 ```
 
@@ -24,7 +24,7 @@ LimitActivations = {
 ### MaxActivations
 
 ```luau
-LimitActivations.MaxActivations: number
+LimitActivations.MaxActivations: std.Attribute<number>
 
 ```
 
@@ -38,7 +38,7 @@ activatable.
 ### ResetWhenUnactivatable
 
 ```luau
-LimitActivations.ResetWhenUnactivatable: boolean
+LimitActivations.ResetWhenUnactivatable: std.Attribute<boolean>
 
 ```
 

@@ -15,13 +15,13 @@ The SoundPlayer will play the first thing found in order:
 ```luau
 SoundPlayer = {
 	-- Attributes
-	PlayFromAssets: keyof<typeof(std.audio.AUDIO_ASSETS)>?,
-	Sound: string?,
-	Spatial: boolean,
-	Speed: number?,
-	Volume: number?,
-	Activatable: boolean,
-	ActivationBehavior: ActivationBehavior,
+	PlayFromAssets: std.Attribute<keyof<typeof(std.audio.AUDIO_ASSETS)>?>,
+	Sound: std.Attribute<string?>,
+	Spatial: std.Attribute<boolean>,
+	Speed: std.Attribute<number?>,
+	Volume: std.Attribute<number?>,
+	Activatable: std.Attribute<boolean>,
+	ActivationBehavior: std.Attribute<ActivationBehavior>,
 }
 ```
 
@@ -34,7 +34,7 @@ SoundPlayer = {
 ### PlayFromAssets
 
 ```luau
-SoundPlayer.PlayFromAssets: keyof<typeof(std.audio.AUDIO_ASSETS)>?
+SoundPlayer.PlayFromAssets: std.Attribute<keyof<typeof(std.audio.AUDIO_ASSETS)>?>
 
 ```
 
@@ -49,7 +49,7 @@ parented under the SoundPlayer.
 ### Sound
 
 ```luau
-SoundPlayer.Sound: string?
+SoundPlayer.Sound: std.Attribute<string?>
 
 ```
 
@@ -63,7 +63,7 @@ An asset ID that should be used if a `PlayFromAssets` attribute or a
 ### Spatial
 
 ```luau
-SoundPlayer.Spatial: boolean
+SoundPlayer.Spatial: std.Attribute<boolean>
 
 ```
 
@@ -77,7 +77,7 @@ or parented to nil, so played "globally".
 ### Speed
 
 ```luau
-SoundPlayer.Speed: number?
+SoundPlayer.Speed: std.Attribute<number?>
 
 ```
 
@@ -92,7 +92,7 @@ overrides the `PlaybackSpeed` property in any Sound instance.
 ### Volume
 
 ```luau
-SoundPlayer.Volume: number?
+SoundPlayer.Volume: std.Attribute<number?>
 
 ```
 
@@ -106,7 +106,7 @@ property in any Sound instance.
 ### Activatable
 
 ```luau
-SoundPlayer.Activatable: boolean
+SoundPlayer.Activatable: std.Attribute<boolean>
 
 ```
 
@@ -119,7 +119,7 @@ Whether this object can be activated. See the [Activation](../../guides/activati
 ### ActivationBehavior
 
 ```luau
-SoundPlayer.ActivationBehavior: ActivationBehavior
+SoundPlayer.ActivationBehavior: std.Attribute<ActivationBehavior>
 
 ```
 

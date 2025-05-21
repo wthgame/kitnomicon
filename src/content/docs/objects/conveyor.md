@@ -10,8 +10,8 @@ Conveyors speeds contacting objects facing it's direction.
 ```luau
 Conveyor = {
 	-- Attributes
-	Speed: number,
-	SynchronizeConveyorBeams: boolean,
+	Speed: std.Attribute<number>,
+	SynchronizeConveyorBeams: std.Attribute<boolean>,
 }
 ```
 
@@ -24,7 +24,7 @@ Conveyor = {
 ### Speed
 
 ```luau
-Conveyor.Speed: number
+Conveyor.Speed: std.Attribute<number>
 
 ```
 
@@ -37,7 +37,7 @@ The speed in studs per second that objects move along the conveyor.
 ### SynchronizeConveyorBeams
 
 ```luau
-Conveyor.SynchronizeConveyorBeams: boolean
+Conveyor.SynchronizeConveyorBeams: std.Attribute<boolean>
 
 ```
 

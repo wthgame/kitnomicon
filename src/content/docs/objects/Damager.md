@@ -11,7 +11,7 @@ typically use fixed values.
 ```luau
 Damager = {
 	-- Attributes
-	Damage: Damage,
+	Damage: std.Attribute<Damage>,
 }
 ```
 
@@ -24,7 +24,7 @@ Damager = {
 ### Damage
 
 ```luau
-Damager.Damage: Damage
+Damager.Damage: std.Attribute<Damage>
 
 ```
 

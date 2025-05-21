@@ -11,9 +11,9 @@ Ziplines.
 ```luau
 Dismounter = {
 	-- Attributes
-	Dismount_X: boolean,
-	Activatable: boolean,
-	ActivationBehavior: ActivationBehavior,
+	Dismount_X: std.Attribute<boolean>,
+	Activatable: std.Attribute<boolean>,
+	ActivationBehavior: std.Attribute<ActivationBehavior>,
 	-- API
 	onDismount: std.LemonSignal<std.Set<string>>,
 }
@@ -28,7 +28,7 @@ Dismounter = {
 ### Dismount_X
 
 ```luau
-Dismounter.Dismount_X: boolean
+Dismounter.Dismount_X: std.Attribute<boolean>
 
 ```
 
@@ -41,7 +41,7 @@ When activated, dismounts the "X" object.
 ### Activatable
 
 ```luau
-Dismounter.Activatable: boolean
+Dismounter.Activatable: std.Attribute<boolean>
 
 ```
 
@@ -54,7 +54,7 @@ Whether this object can be activated. See the [Activation](../../guides/activati
 ### ActivationBehavior
 
 ```luau
-Dismounter.ActivationBehavior: ActivationBehavior
+Dismounter.ActivationBehavior: std.Attribute<ActivationBehavior>
 
 ```
 
