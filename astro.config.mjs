@@ -11,6 +11,10 @@ export default defineConfig({
 
 	integrations: [
 		starlight({
+			title: "The Kitnomicon",
+			logo: {
+				src: "./src/assets/wth-logo.png",
+			},
 			social: [
 				{
 					icon: "github",
@@ -18,7 +22,6 @@ export default defineConfig({
 					href: "https://github.com/wthgame/kitnomicon",
 				},
 			],
-			title: "The Kitnomicon",
 			sidebar: [
 				{
 					label: "Intro",
@@ -46,7 +49,16 @@ export default defineConfig({
 					autogenerate: { directory: "std" },
 				},
 			],
-			customCss: ["./src/styles/global.css"],
+			customCss: [
+				"./src/styles/global.css",
+				"@fontsource/merriweather/300.css",
+				"@fontsource/merriweather/400.css",
+				"@fontsource/merriweather/500.css",
+				"@fontsource/merriweather/600.css",
+				"@fontsource/merriweather/700.css",
+				"@fontsource/merriweather/800.css",
+				"@fontsource/merriweather/900.css",
+			],
 		}),
 	],
 

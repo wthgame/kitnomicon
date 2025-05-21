@@ -5,6 +5,7 @@
       "dependencies": {
         "@astrojs/starlight": "^0.34.3",
         "@astrojs/starlight-tailwind": "^4.0.1",
+        "@fontsource/merriweather": "^5.2.7",
         "@tailwindcss/vite": "^4.1.7",
         "astro": "^5.6.1",
         "sharp": "^0.32.5",
@@ -106,6 +107,8 @@
     "@expressive-code/plugin-shiki": ["@expressive-code/plugin-shiki@0.41.2", "", { "dependencies": { "@expressive-code/core": "^0.41.2", "shiki": "^3.2.2" } }, "sha512-xD4zwqAkDccXqye+235BH5bN038jYiSMLfUrCOmMlzxPDGWdxJDk5z4uUB/aLfivEF2tXyO2zyaarL3Oqht0fQ=="],
 
     "@expressive-code/plugin-text-markers": ["@expressive-code/plugin-text-markers@0.41.2", "", { "dependencies": { "@expressive-code/core": "^0.41.2" } }, "sha512-JFWBz2qYxxJOJkkWf96LpeolbnOqJY95TvwYc0hXIHf9oSWV0h0SY268w/5N3EtQaD9KktzDE+VIVwb9jdb3nw=="],
+
+    "@fontsource/merriweather": ["@fontsource/merriweather@5.2.7", "", {}, "sha512-ryOP1w5L0bZCFm1YoITndy18N+4Z07sJFkWEl9XxCAbqx88gkUO/F/vjPMw4Uup20w6plDD5w6xmsRiAI3+1NA=="],
 
     "@img/sharp-darwin-arm64": ["@img/sharp-darwin-arm64@0.33.5", "", { "optionalDependencies": { "@img/sharp-libvips-darwin-arm64": "1.0.4" }, "os": "darwin", "cpu": "arm64" }, "sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ=="],
 
