@@ -8,3 +8,28 @@ description: Visually hides the tagged instance. Useful when working with bigger
 Visually hides the tagged instance. Useful when working with bigger objects
 that benefit from being visible while editing, but should be hidden while
 playing a tower.
+
+```luau
+Hidden = {
+	-- Attributes
+	HideDescendants: std.Attribute<boolean>,
+}
+```
+
+
+
+## Attributes
+
+
+
+### HideDescendants
+
+```luau
+Hidden.HideDescendants: std.Attribute<boolean>
+
+```
+
+Whether descendants should be hidden as well. Turning on `HideDescendants`
+on a Model of Folder of objects is more managable than manually tagging
+each child.
+
