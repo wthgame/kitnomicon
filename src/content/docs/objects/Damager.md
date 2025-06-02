@@ -12,6 +12,8 @@ typically use fixed values.
 Damager = {
 	-- Attributes
 	Damage: std.Attribute<Damage>,
+	DamageMeasurement: std.Attribute<DamageMeasurement>,
+	Poison: std.Attribute<boolean>,
 }
 ```
 
@@ -32,6 +34,32 @@ Amount of Damage that should be dealt. See the `Damage` type.
 
 
 
+
+
+### DamageMeasurement
+
+```luau
+Damager.DamageMeasurement: std.Attribute<DamageMeasurement>
+
+```
+
+The measurement of damage to be dealt. See the `DamageMeasurement` type.
+
+
+
+
+
+### Poison
+
+```luau
+Damager.Poison: std.Attribute<boolean>
+
+```
+
+Whether damage should be dealt overtime as poison.
+
+
+
 ## API
 
 
@@ -49,11 +77,25 @@ export type Damage = number | "Normal" | "Double" | "Quadruple" | "Lethal"
 
 Defines the amounts of Damage to be dealt. Positive number can be used to
 define variable damage values. Otherwise, the following is used:
-| ------------- | -------- |
 | Name          | Amount   |
 | ------------- | -------- |
 | `"Normal"`    | `10`     |
 | `"Double"`    | `20`     |
 | `"Quadruple"` | `40`     |
 | `"Lethal"`    | Infinite |
+
+
+
+
+
+#### DamageMeasurement
+
+```luau
+export type DamageMeasurement = "Raw" | "RelativeToMaxHealth"
+
+```
+
+The measurement of damage to be dealt. `Raw` is treated as raw health, while
+`RelativeToMaxHealth` is treated as a percentage of the player's maximum
+health.
 
