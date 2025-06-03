@@ -18,6 +18,7 @@ function KitStdAudio.inferAndPlaySound(
 	searchFor: string?,
 	config: types.PlaySoundConfig?,
 	spatial: boolean?
+
 ): ()
 ```
 
@@ -59,7 +60,8 @@ prelude.inferAndPlaySound(btn, std.SOUND_ASSETS.button, "PressSound")
 function KitStdAudio.playSound(
 	asset: string | Sound,
 	from: Instance?,
-	config: types.PlaySoundConfig?): ()
+	config: types.PlaySoundConfig?
+): ()
 ```
 
 Plays a sound from an asset string or cloned from a Sound instance.
@@ -86,7 +88,8 @@ Plays a sound from an asset string or cloned from a Sound instance.
 function KitStdAudio.playSoundFromGameAssets(
 	key: string,
 	from: Instance?,
-	config: types.PlaySoundConfig?): ()
+	config: types.PlaySoundConfig?
+): ()
 ```
 
 Plays a sound from the game's assets module. See the sounds table in the

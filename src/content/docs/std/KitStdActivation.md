@@ -90,6 +90,7 @@ function KitStdActivation.onActivated(
 	instanceTrove: trove.Trove,
 	instance: T & Instance,
 	onActivated: (trove: trove.Trove, instance: T) -> ()
+
 ): ()
 ```
 

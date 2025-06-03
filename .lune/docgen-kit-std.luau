@@ -84,6 +84,7 @@ for _, extracted in allExtracted do
 					table.insert(params, "\n\t" .. param.name .. ": " .. param.lua_type)
 				end
 				contents ..= table.concat(params, ",")
+				contents ..= "\n"
 			end
 			contents ..= "): "
 			local numReturns = #fn.returns

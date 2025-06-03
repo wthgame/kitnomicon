@@ -11,7 +11,7 @@ Ziplines.
 ```luau
 Dismounter = {
 	-- Attributes
-	Dismount_X: std.Attribute<boolean>,
+	Dismounts: std.Attribute<std.ManyAttribute<boolean>>,
 	Activatable: std.Attribute<boolean>,
 	ActivationBehavior: std.Attribute<ActivationBehavior>,
 	-- API
@@ -25,10 +25,10 @@ Dismounter = {
 
 
 
-### Dismount_X
+### Dismounts
 
 ```luau
-Dismounter.Dismount_X: std.Attribute<boolean>
+Dismounter.Dismounts: std.Attribute<std.ManyAttribute<boolean>>
 
 ```
 
