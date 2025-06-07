@@ -18,6 +18,8 @@ function KitStdCharacter.getCharacter(): types.Character
 
 Returns current character if it exists. Otherwise, wait for it to be added.
 
+
+
 #### Returns
 
 #####  `types.Character`
@@ -35,6 +37,8 @@ function KitStdCharacter.getHumanoid(): Humanoid
 
 Returns the character's Humanoid if it exists. Otherwise, waits for it to
 be added.
+
+
 
 #### Returns
 
@@ -54,6 +58,8 @@ function KitStdCharacter.getHumanoidRootPart(): BasePart
 Returns the character's HumanoidRootPart if it exists. Otherwise, wait for
 it to be added.
 
+
+
 #### Returns
 
 #####  `BasePart`
@@ -70,6 +76,8 @@ function KitStdCharacter.getMaybeCharacter(): types.Character?
 ```
 
 Returns the local player's character if it exists
+
+
 
 #### Returns
 
@@ -88,6 +96,8 @@ function KitStdCharacter.getMaybeHumanoid(): Humanoid?
 
 Returns the character's Humanoid if it exists.
 
+
+
 #### Returns
 
 #####  `Humanoid?`
@@ -104,6 +114,8 @@ function KitStdCharacter.getMaybeHumanoidRootPart(): BasePart?
 ```
 
 Returns the character's HumanoidRootPart if it exists.
+
+
 
 #### Returns
 
@@ -126,6 +138,8 @@ Returns true if a model is a character
 
 ##### character <small>`: Instance`</small>
 
+
+
 #### Returns
 
 #####  `boolean`
@@ -142,6 +156,8 @@ function KitStdCharacter.isCharacterAlive(): boolean
 ```
 
 Returns true if the character is alive.
+
+
 
 #### Returns
 
@@ -163,6 +179,8 @@ Returns true if the given instance is a descendant of the local character.
 #### Parameters
 
 ##### instance <small>`: Instance`</small>
+
+
 
 #### Returns
 
@@ -186,6 +204,8 @@ of the local character.
 
 ##### instance <small>`: Instance`</small>
 
+
+
 #### Returns
 
 #####  `boolean`
@@ -207,6 +227,8 @@ Returns true if a model is the local player's character
 
 ##### character <small>`: Instance`</small>
 
+
+
 #### Returns
 
 #####  `boolean`
@@ -223,6 +245,8 @@ function KitStdCharacter.waitForCharacter(): types.Character
 ```
 
 Waits for and returns the local player's character when it is added
+
+
 
 #### Returns
 

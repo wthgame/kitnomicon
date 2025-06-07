@@ -120,7 +120,7 @@ for _, extracted in allExtracted do
 				end
 			end
 			if numReturns > 0 then
-				contents ..= "#### Returns"
+				contents ..= "\n\n#### Returns"
 
 				for _, r in fn.returns do
 					contents ..= "\n\n"

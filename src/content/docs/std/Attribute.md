@@ -28,7 +28,9 @@ The attribute.
 
 ##### instance <small>`: Instance`</small>
 
-The instance to get the attribute from.#### Returns
+The instance to get the attribute from.
+
+#### Returns
 
 #####  `T`
 
@@ -42,13 +44,15 @@ The value of the attribute.`
 function Attribute.__tostring(self: Attribute<T>): string
 ```
 
-Metamethod to transform the option into a string.
+Metamethod to transform the attribute into a string.
 
 #### Parameters
 
 ##### self <small>`: Attribute<T>`</small>
 
-The attribute to stringify.#### Returns
+The attribute to stringify.
+
+#### Returns
 
 #####  `string`
 
@@ -76,7 +80,9 @@ The attribute.
 
 ##### instance <small>`: Instance`</small>
 
-The instance to get the attribute from.#### Returns
+The instance to get the attribute from.
+
+#### Returns
 
 #####  `T`
 
@@ -110,7 +116,9 @@ The instance to track the attribute.
 
 ##### callback <small>`: (new: T) -> ()`</small>
 
-A function to call when the attribute changes, receiving the new value.#### Returns
+A function to call when the attribute changes, receiving the new value.
+
+#### Returns
 
 #####  `RBXScriptConnection`
 
@@ -139,7 +147,9 @@ The attribute.
 
 ##### instance <small>`: Instance`</small>
 
-The instance to get the attribute from.#### Returns
+The instance to get the attribute from.
+
+#### Returns
 
 #####  `T`
 
@@ -171,7 +181,9 @@ The instance to set the attribute.
 
 ##### value <small>`: T?`</small>
 
-The new value to set for the attribute. Can be `nil` to clear the attribute.#### Returns
+The new value to set for the attribute. Can be `nil` to clear the attribute.
+
+#### Returns
 
 #####  `T`
 

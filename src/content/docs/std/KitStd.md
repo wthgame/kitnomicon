@@ -189,7 +189,9 @@ end
 
 ##### ... <small>`: never`</small>
 
-Any value that should never exist.#### Returns
+Any value that should never exist.
+
+#### Returns
 
 #####  `never`
 
@@ -209,6 +211,8 @@ function KitStd.roundColor(color: Color3): Color3
 #### Parameters
 
 ##### color <small>`: Color3`</small>
+
+
 
 #### Returns
 

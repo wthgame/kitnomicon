@@ -34,8 +34,45 @@ An optional `t.check` function to validate the type of the attribute's value.
 
 ##### default <small>`: T?`</small>
 
-An optional default value for the attribute if it's not set or invalid.#### Returns
+An optional default value for the attribute if it's not set or invalid.
+
+#### Returns
 
 #####  `Attribute<T>`
 
 A new `Attribute` object.`
+
+---
+
+### AttributeGroup
+
+```luau
+function attributes.AttributeGroup(
+	prefix: string,
+	check: t.check<T>,
+	pattern: string?
+): AttributeGroup<T>
+```
+
+Creates a new `AttributeGroup` object with the name, an optional typechecker,
+and an optional pattern.
+
+#### Parameters
+
+##### prefix <small>`: string`</small>
+
+The common prefix for all attributes in this group (e.g., "Property", "Dismounts").
+
+##### check <small>`: t.check<T>`</small>
+
+An optional `t.check` function to validate the type of each attribute's value within this group.
+
+##### pattern <small>`: string?`</small>
+
+An optional string pattern to extract a unique key from the attribute name. Defaults to `^{prefix}_(%w+)`, which captures word characters after the prefix and an underscore.
+
+#### Returns
+
+#####  `AttributeGroup<T>`
+
+A new `AttributeGroup` object.`

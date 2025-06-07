@@ -8,3 +8,7 @@ docgen:
     lune run write-kit-modules
     lune run docgen-kit-objects
     lune run docgen-kit-std
+
+download-and-docgen:
+    just download-kit
+    just docgen
